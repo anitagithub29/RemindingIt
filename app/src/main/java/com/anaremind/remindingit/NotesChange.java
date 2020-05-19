@@ -15,6 +15,8 @@ public class NotesChange extends Activity {
     private EditText mTitleText;
     private EditText mBodyText;
     private Long mRowId;
+    private DbAdapter mDbHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +25,11 @@ public class NotesChange extends Activity {
 
         mTitleText = (EditText) findViewById(R.id.title);
         mBodyText = (EditText) findViewById(R.id.body);
+        mDbHelper = new DbAdapter(this);
+        mDbHelper.open();
 
         Button confirmButton = (Button) findViewById(R.id.confirm);
-
+        final Button deleteNoteButton = (Button) findViewById(R.id.deleteNote);
 
         mRowId = null;
         Bundle extras = getIntent().getExtras();
@@ -41,6 +45,7 @@ public class NotesChange extends Activity {
                 mBodyText.setText(body);
             }
         }
+
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
 
@@ -58,11 +63,20 @@ public class NotesChange extends Activity {
                     setResult(RESULT_OK, mIntent);
                     finish();
                 } else {
-                    Toast.makeText(getApplicationContext(),"Necesitas incluir datos en titulo y cuerpo de la nota", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Necesitas incluir datos en titulo y cuerpo de la nota", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+        deleteNoteButton.setOnClickListener(new View.OnClickListener() {
 
+            public void onClick(View view) {
+                if (mRowId != null) {
+                    mDbHelper.deleteNote(mRowId);
+                    finish();
+                }
             }
 
         });
+
     }
 }
