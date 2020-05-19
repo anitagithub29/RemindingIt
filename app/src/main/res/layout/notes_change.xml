@@ -48,7 +48,7 @@
         android:text="AÑADIR TAREA" />
 
     <Button
-        android:id="@+id/menu_delete"
+        android:id="@+id/deleteNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#A4F88484"

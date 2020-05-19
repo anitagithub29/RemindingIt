@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class NotesChange extends Activity {
@@ -24,6 +25,7 @@ public class NotesChange extends Activity {
         mBodyText = (EditText) findViewById(R.id.body);
 
         Button confirmButton = (Button) findViewById(R.id.confirm);
+
 
         mRowId = null;
         Bundle extras = getIntent().getExtras();
@@ -43,19 +45,22 @@ public class NotesChange extends Activity {
         confirmButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
+                if (!mTitleText.getText().toString().equals("") && !mBodyText.getText().toString().equals("")) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(DbAdapter.KEY_TITLE, mTitleText.getText().toString());
+                    bundle.putString(DbAdapter.KEY_BODY, mBodyText.getText().toString());
+                    if (mRowId != null) {
+                        bundle.putLong(DbAdapter.KEY_ROWID, mRowId);
+                    }
 
-                bundle.putString(DbAdapter.KEY_TITLE, mTitleText.getText().toString());
-                bundle
-                        .putString(DbAdapter.KEY_BODY, mBodyText.getText().toString());
-                if (mRowId != null) {
-                    bundle.putLong(DbAdapter.KEY_ROWID, mRowId);
+                    Intent mIntent = new Intent();
+                    mIntent.putExtras(bundle);
+                    setResult(RESULT_OK, mIntent);
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(),"Necesitas incluir datos en titulo y cuerpo de la nota", Toast.LENGTH_LONG).show();
                 }
 
-                Intent mIntent = new Intent();
-                mIntent.putExtras(bundle);
-                setResult(RESULT_OK, mIntent);
-                finish();
             }
 
         });

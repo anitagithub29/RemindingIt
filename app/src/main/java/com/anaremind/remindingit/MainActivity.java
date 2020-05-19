@@ -53,7 +53,6 @@ public class MainActivity extends ListActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         menu.add(0, INSERT_ID, 0, R.string.menu_insert);
-        menu.add(0, DELETE_ID, 0, R.string.menu_delete);
                 return true;
     }
 

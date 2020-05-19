@@ -10,9 +10,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DbAdapter {
-    public static final String KEY_TITLE = "title";
-    public static final String KEY_BODY = "body";
-    public static final String KEY_ROWID = "_id";
+    static final String KEY_TITLE = "title";
+    static final String KEY_BODY = "body";
+    static final String KEY_ROWID = "_id";
 
     private static final String TAG = "com.anaremind.remindingit.DbAdapter";
     private DatabaseHelper mDbHelper;
@@ -91,12 +91,13 @@ public class DbAdapter {
      * @param body the body of the note
      * @return rowId or -1 if failed
      */
-    public long createNote(String title, String body) {
+    public long createNote(String title , String body) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
         initialValues.put(KEY_BODY, body);
 
         return mDb.insert(DATABASE_TABLE, null, initialValues);
+
     }
 
     /**
