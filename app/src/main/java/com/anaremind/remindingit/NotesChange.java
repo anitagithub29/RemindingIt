@@ -1,7 +1,7 @@
 package com.anaremind.remindingit;
 
-import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-public class NotesChange extends AppCompatActivity {
+public class NotesChange extends Activity {
 
     private EditText mTitleText;
     private EditText mBodyText;

@@ -53,6 +53,7 @@ public class MainActivity extends ListActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         menu.add(0, INSERT_ID, 0, R.string.menu_insert);
+        menu.add(0, DELETE_ID, 0, R.string.menu_delete);
                 return true;
     }
 
@@ -68,8 +69,7 @@ public class MainActivity extends ListActivity {
     }
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v,
-                                    ContextMenu.ContextMenuInfo menuInfo) {
+    public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         menu.add(0, DELETE_ID, 0, R.string.menu_delete);
     }
@@ -111,6 +111,7 @@ public class MainActivity extends ListActivity {
         Bundle extras = intent.getExtras();
         switch(requestCode) {
             case ACTIVITY_CREATE:
+                assert extras != null;
                 String title = extras.getString(DbAdapter.KEY_TITLE);
                 String body = extras.getString(DbAdapter.KEY_BODY);
                 mDbHelper.createNote(title, body);

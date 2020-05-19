@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">RemindingIt</string>
-    <string name="menu_insert" />
-    <string name="menu_delete" />
-    <string name="no_notes">No Notes!</string>
+    <string name="menu_insert">Añadir nota</string>
+    <string name="menu_delete">Eliminar nota</string>
+    <string name="no_notes">¡No existen notas aún!</string>
+    <string name="descripcion">Descripción</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.anaremind.remindingit;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -42,10 +43,10 @@ public class DbAdapter {
             db.execSQL(DATABASE_CREATE);
         }
 
+        @SuppressLint("LongLogTag")
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
-                    + newVersion + ", which will destroy all old data");
+            Log.w(TAG,"Upgrading database from version " + oldVersion + " to "+ newVersion + ", which will destroy all old data");
             db.execSQL("DROP TABLE IF EXISTS notes");
             onCreate(db);
         }
