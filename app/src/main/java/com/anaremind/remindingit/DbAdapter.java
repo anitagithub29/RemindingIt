@@ -19,7 +19,7 @@ public class DbAdapter {
     private SQLiteDatabase mDb;
 
     /**
-     * Database creation sql statement
+     * Creamos la base de datos
      */
     private static final String DATABASE_CREATE =
             "create table notes (_id integer primary key autoincrement, "
@@ -52,25 +52,11 @@ public class DbAdapter {
         }
     }
 
-    /**
-     * Constructor - takes the context to allow the database to be
-     * opened/created
-     *
-     * @param ctx the Context within which to work
-     */
     public DbAdapter(Context ctx) {
         this.mCtx = ctx;
     }
 
-    /**
-     * Open the notes database. If it cannot be opened, try to create a new
-     * instance of the database. If it cannot be created, throw an exception to
-     * signal the failure
-     *
-     * @return this (self reference, allowing this to be chained in an
-     *         initialization call)
-     * @throws SQLException if the database could be neither opened or created
-     */
+
     public DbAdapter open() throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
         mDb = mDbHelper.getWritableDatabase();
@@ -82,15 +68,7 @@ public class DbAdapter {
     }
 
 
-    /**
-     * Create a new note using the title and body provided. If the note is
-     * successfully created return the new rowId for that note, otherwise return
-     * a -1 to indicate failure.
-     *
-     * @param title the title of the note
-     * @param body the body of the note
-     * @return rowId or -1 if failed
-     */
+
     public long createNote(String title , String body) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
@@ -100,35 +78,20 @@ public class DbAdapter {
 
     }
 
-    /**
-     * Delete the note with the given rowId
-     *
-     * @param rowId id of note to delete
-     * @return true if deleted, false otherwise
-     */
+
     public boolean deleteNote(long rowId) {
 
         return mDb.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
     }
 
-    /**
-     * Return a Cursor over the list of all notes in the database
-     *
-     * @return Cursor over all notes
-     */
+
     public Cursor fetchAllNotes() {
 
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
                 KEY_BODY}, null, null, null, null, null);
     }
 
-    /**
-     * Return a Cursor positioned at the note that matches the given rowId
-     *
-     * @param rowId id of note to retrieve
-     * @return Cursor positioned to matching note, if found
-     * @throws SQLException if note could not be found/retrieved
-     */
+
     public Cursor fetchNote(long rowId) throws SQLException {
 
         Cursor mCursor =
@@ -143,16 +106,7 @@ public class DbAdapter {
 
     }
 
-    /**
-     * Update the note using the details provided. The note to be updated is
-     * specified using the rowId, and it is altered to use the title and body
-     * values passed in
-     *
-     * @param rowId id of note to update
-     * @param title value to set note title to
-     * @param body value to set note body to
-     * @return true if the note was successfully updated, false otherwise
-     */
+
     public boolean updateNote(long rowId, String title, String body) {
         ContentValues args = new ContentValues();
         args.put(KEY_TITLE, title);

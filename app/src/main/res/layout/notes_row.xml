@@ -3,4 +3,7 @@
     android:id="@+id/text1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-   />
+
+    android:background="#FAE6BA"
+    android:textColor="#070009"
+    android:textSize="18sp" />

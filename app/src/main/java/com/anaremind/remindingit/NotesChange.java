@@ -77,6 +77,12 @@ public class NotesChange extends Activity {
             }
 
         });
+    }
 
+    @Override
+    protected void onPause() {
+        setResult(RESULT_CANCELED);
+        super.onPause();
     }
 }
+

@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FAE6BA"
+    android:orientation="vertical">
 
-    <LinearLayout android:orientation="horizontal"
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre Tarea"
+            android:textColor="#040404"
             android:textSize="18sp"
             android:textStyle="bold" />
-        <EditText android:id="@+id/title"
+
+        <EditText
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint= "Añade aquí el nombre de tu tarea..."/>
+
+            android:hint="Añade aquí el nombre de tu tarea..."
+            android:textColor="#070707" />
 
     </LinearLayout>
 
@@ -27,6 +35,7 @@
         android:layout_height="wrap_content"
         android:text="@string/descripcion"
 
+        android:textColor="#040404"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -35,24 +44,27 @@
         android:layout_width="424dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:hint="Añade aquí información de la tarea..."
         android:scrollbars="vertical"
-        android:hint= "Añade aquí información de la tarea..."
-        />
+        android:textColor="#070707"
+        android:textColorLink="#050505" />
 
 
     <Button
         android:id="@+id/confirm"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#A4F88484"
-        android:text="AÑADIR TAREA" />
+        android:background="#8853C5"
+        android:text="AÑADIR TAREA"
+        android:textColor="#F0FA8D" />
 
     <Button
         android:id="@+id/deleteNote"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#A4F88484"
-        android:text="BORRAR TAREA" />
+        android:background="#B749CA"
+        android:text="BORRAR TAREA"
+        android:textColor="#F0FA8D" />
 
 
 </LinearLayout>
